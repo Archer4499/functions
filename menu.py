@@ -26,31 +26,31 @@ def validate_input(str_input, int_min=float("-inf"), int_max=float("inf")):
         return False
 
 
-def menu(*arg):
+def menu(title, *arg):
     # A simple text menu with a variable number of options
     n = len(arg)
     selection = False
     while not selection:
-        print("\nMenu:")
+        print("\n" + title + ":")
         for i in range(n):
             print(str(i+1) + ". " + arg[i])
         print(str(n+1) + ". Quit")
 
         selection = validate_input(input("\nEnter selection: "), 1, n+1)
 
-    if selection is n+1:  # quit
+    if selection == n+1:  # quit
         return False
     else:
         return selection
 
 
 if __name__ == "__main__":
-    result = menu("Option 1", "Option 2", "Option 3")
+    result = menu("Menu", "Option 1", "Option 2", "Option 3")
     while result:
-        if result is 1:
+        if result == 1:
             print("Option 1")
-        elif result is 2:
+        elif result == 2:
             print("Option 2")
-        elif result is 3:
+        elif result == 3:
             print("Option 3")
         result = menu("Option 1", "Option 2", "Option 3")
